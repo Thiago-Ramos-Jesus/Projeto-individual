@@ -12,6 +12,7 @@ CREATE TABLE Score (
     pts INT,
     erros INT,
     temp INT,
+    dificuldade char(7) CONSTRAINT CHK_dificuldade CHECK (dificuldade = 'facíl' or dificuldade = 'difícil'  )
     fkUsuario INT,
     PRIMARY KEY (idScore , fkUsuario),
     FOREIGN KEY (fkUsuario)
@@ -20,13 +21,18 @@ CREATE TABLE Score (
 
 CREATE TABLE Comentarios (
     idComentario INT AUTO_INCREMENT,
-    texto VARCHAR(250),
+    titulo VARCHAR(100),
+    descricao VARCHAR(250),
     fkUsuario INT,
     PRIMARY KEY (idComentario , fkUsuario),
     FOREIGN KEY (fkUsuario)
         REFERENCES Usuario (idUsuario)
 );
 -- drop database csgo;
+
+
+SELECT idComentario, titulo, descricao, fkUsuario, idUsuario, nickname, email FROM Comentarios INNER JOIN usuario ON fkUsuario = idUsuario;
+SELECT idComentario, titulo, descricao, fkUsuario, idUsuario, nickname, email FROM Comentarios INNER JOIN usuario ON fkUsuario = idUsuario WHERE descricao LIKE '${texto}';
 
 SELECT 
     *

@@ -67,6 +67,13 @@ function btnuser() {
 function btnFecharUser() {
   cont_user.style.display = "none";
 }
+// btn como jogar
+function btnFecharcomojogar(){
+  cont_comojogar.style.display = "none";
+}
+
+function comojogar(){cont_comojogar.style.display = "flex";}
+
 function perfil() {
   window.location = "./perfil.html";
 }
@@ -75,6 +82,9 @@ function forum() {
 }
 function index() {
   window.location = "./index.html";
+}
+function tabela(){
+  window.location = "./tabela.html";
 }
 // redes sociais
 function redeSteam() {

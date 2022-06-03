@@ -116,12 +116,13 @@ function pontos(req, res) {
   var pts = req.body.acertosServer;
   var erros = req.body.errosServer;
   var temp = req.body.tempoServer;
+  var dificuldade = req.body.dificuldadeServer;
   // console.log('estou aqui')
   if (fkUsuario == undefined) {
     res.status(400).send("Seu id está undefined!");
   } else {
     usuarioModel
-      .pontos(fkUsuario, pts, erros, temp)
+      .pontos(fkUsuario, pts, erros, temp, dificuldade)
       .then(function (resultado) {
         res.json(resultado);
       })
@@ -138,7 +139,8 @@ function pontos(req, res) {
 // forum
 
 function listarPorUsuario(req, res) {
-  usuarioModel.listarPorUsuario()
+  usuarioModel
+    .listarPorUsuario()
     .then(function (resultado) {
       if (resultado.length > 0) {
         res.status(200).json(resultado);
@@ -158,7 +160,7 @@ function publicar(req, res) {
   var descricao = req.body.descricao;
   var idUsuario = req.params.idUsuario;
 
-   if (descricao == undefined) {
+  if (descricao == undefined) {
     res.status(400).send("A descrição está indefinido!");
   } else if (idUsuario == undefined) {
     res.status(403).send("O id do usuário está indefinido!");

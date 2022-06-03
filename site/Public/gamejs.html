@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
     <script src="js/minegame.js"></script>
+    <script src="js/minegamesemfor.js"></script>
     <script src="js/funcoes.js"></script>
     <link rel="icon" href="assets/img/logo.png" />
     <title>Mini-Game</title>
   </head>
-  <body class="body_game" onload="validarHeader()">
+  <body class="body_game">
     <div class="header">
       <div class="navmask header">
         <div class="container">
@@ -27,8 +28,25 @@
 
     <div class="minigame" id="miniGame">
       <div class="card">
-        <button class="btn" onclick="jogar()">JOGAR</button>
+        <H1 class="titulo cslogo">JOGAR</H1>
+        <br>
+        <button class="btn" onclick="jogar()">MODO FACÍL</button>
+        <button class="btn" onclick="jogarDificil()">MODO DIFÌCIl</button>
         <button class="btn" onclick="comojogar()">COMO JOGAR</button>
+      </div>
+      <div class="cont-comojogar" id="cont_comojogar">
+        <img src="assets/img/persontut.png" alt="">
+        <div class="contbox">
+          <div class="box">
+            <h1 class="titulo">Modo Facíl</h1>
+            <p>No modo fácil você deve acertar 35 alvos no menor tempo possível!!</p>
+          </div>
+          <div class="box">
+            <h1 class="titulo">Modo Difícil</h1>
+            <p>No modo difícil você deve acertar a maior quantidade de alvos possível em 60 segundos!!</p>
+          </div>
+        </div>
+        <h2 class='titulo' onclick="btnFecharcomojogar()">X</h2>
       </div>
     </div>
   </body>

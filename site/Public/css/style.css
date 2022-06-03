@@ -180,16 +180,13 @@ a {
 ::-webkit-scrollbar {
   width: 10px;
 }
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 2px grey;
-  border-radius: 10px;
-}
 ::-webkit-scrollbar-thumb {
   background: #de9b35;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #e79b28;
+  transition: 0.5s;
 }
 
 /* LI do Header com after e hover */
@@ -224,6 +221,7 @@ li {
 .li_ani:hover::after {
   width: 100%;
   left: 0;
+  transition: 0.5s;
 }
 /* button */
 .btn {
@@ -240,6 +238,7 @@ li {
 }
 .btn:hover {
   background-color: #f39811;
+  transition: 0.5s;
 }
 
 /* botao com animaçao so HOVER pq before e mt hard*/
@@ -309,6 +308,14 @@ li {
   height: 50px;
   border-radius: 100%;
 }
+/* jogo sem for */
+.body_game .alvoI {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  /* jogo sem for */
+  position: absolute;
+}
 #span_pontos {
   font-family: csgo;
 }
@@ -316,6 +323,7 @@ li {
   width: 100%;
   display: flex;
   justify-content: center;
+  background-size:cover ;
 }
 .alvos {
   background-color: gray;
@@ -375,6 +383,7 @@ li {
 .cont-info img:hover {
   width: 37px;
   height: 37px;
+  transition: 0.5s;
 }
 .cont-info H2 {
   font-family: csgo;
@@ -384,6 +393,7 @@ li {
 }
 .cont-info H2:hover {
   color: black;
+  transition: 0.5s;
 }
 
 /* table */
@@ -425,7 +435,7 @@ tbody td {
   height: 20px;
   font-size: 16px;
   padding: 10px 10px 10px 13px;
-  border-bottom: 1px solid #de9b32;
+  border: 0.5px solid #de9b32;
 }
 .card_log {
   width: 400px;
@@ -460,6 +470,7 @@ input {
 .btn-log:hover {
   /* border: 1px solid black; */
   width: 145px;
+  transition: 0.5s;
 }
 .loading-div img {
   display: none;
@@ -506,6 +517,7 @@ input {
 }
 .cont-user H2:hover {
   color: black;
+  transition: 0.5s;
 }
 .cont-user p {
   cursor: pointer;
@@ -515,6 +527,7 @@ input {
 }
 .cont-user p:hover {
   color: black;
+  transition: 0.5s;
 }
 /* banner fim de jogo */
 .cont-fim {
@@ -668,6 +681,7 @@ input {
 }
 .header-left .sinal:hover {
   color: #f39811;
+  transition: 0.5s;
 }
 .div-forum {
   display: flex;
@@ -685,14 +699,102 @@ input {
   align-items: center;
   flex-direction: column;
 }
+.avisos h1 {
+  margin-top: 0;
+}
 textarea {
+  border-radius: 5px;
+  height: 50px;
   width: 700px;
+}
+.body_forum::-webkit-scrollbar {
+  display: none;
+}
+.body_forum::-webkit-scrollbar-thumb {
+  border-radius: 0 5px 0 0;
 }
 .feed-container {
   width: 700px;
-  height: 400px;
+  height: 300px;
   display: flex;
   flex-direction: column;
+  background-color: #212124;
+  box-shadow: 10px 12px 12px 0px rgb(19 19 19);
+  border-radius: 5px;
+  padding: 10px;
+  overflow: auto;
+}
+.publicacao {
+  display: flex;
+  flex-direction: column;
+  background-color: #292646;
+  padding: 10px;
+  border-radius: 10px;
+  width: 500px;
+  margin-bottom: 10px;
+}
+.mymensagem {
+  background-color: #c18327;
+  display: flex;
+  align-self: flex-end;
+}
+.cont-comojogar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 
-  overflow: scroll;
+  position: fixed;
+  z-index: 1;
+
+  display: none;
+  align-content: center;
+  height: 350px;
+  width: 550px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f39811;
+  background-size: cover;
+  top: 10vh;
+  right: 4vw;
+  box-shadow: -4px 4px 8px 2px rgb(19 19 19);
+}
+.cont-comojogar H1:hover {
+  cursor: pointer;
+  color: black;
+  transition: 0.5s;
+}
+.cont-comojogar p {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 20px;
+}
+.cont-comojogar img {
+  width: 200px;
+  height: 200px;
+}
+.cont-comojogar p {
+  font-size: 16px;
+  font-weight: 900;
+  cursor: help;
+}
+.contbox {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.cont-comojogar h2 {
+  height: 100%;
+  color: #19181e;
+  cursor: pointer;
+}
+.cont-comojogar h2:active {
+font-size: 23px;
+  color: #000000;
+  /* transition: 0.5s; */
+}
+.cont-comojogar h1 {
+  margin-bottom: 2px;
+  margin-top: 10px;
+  color: #19181e;
 }
