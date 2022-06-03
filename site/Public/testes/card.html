@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button {
+	font-size: 30px;
+	padding: 10px 30px;
+	margin: 10px;
+	border: 0;
+	cursor: pointer;
+	color: black;
+	text-transform: lowercase;
+	border-radius: 10px;
+	display: inline-block;
+	overflow: hidden; /* fazer com q as bordas do animaçao fiquem no formato do btn */
+	/* transition: all 0.4s cubic-bezier(.86, .01, .15, .99); */
+}
+
+button::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+}
+
+button.gradient:hover {
+	color: white;
+	box-shadow: 0 5px 35px rgba(0, 0, 0, 0.6);
+	transform: translateY(-5px);
+}
+
+
+/************************************
+GRADIENT BUTTONS 
+
+
+Button One 
+
+*/
+
+.button-one {
+	background-color: #f9ff00;
+	transform: translateY(0);
+}
+
+.button-one::before {
+	background: linear-gradient(to right, #f9ff00, #00ff00);
+	-webkit-transform: scaleY(0);
+	transform: scaleX(0);
+	-webkit-transform-origin: 50% 100%;
+	transform-origin: 100% 0%;
+	transition: 0.4s cubic-bezier(.86, .01, .15, .99);
+}
+
+.button-one:hover::before {
+	transform: scaleX(1.1) scaleY(1.1);
+}
+
+.button-one:hover {
+	color: #333;
+}
+
+
+/* Button Two */
+
+.button-two {
+	background: #efcfff;
+	transform: perspective(1px) translateZ(0);
+	transition: 0.4s cubic-bezier(.86, .01, .15, .99);
+}
+
+.button-two:before {
+	background: linear-gradient(to right, #efcfff, #af6fff, #efcfff);
+	transform: scaleX(0);
+	opacity: 0;
+	transform-origin: 50% 50%;
+	transition: 0.4s cubic-bezier(.86, .01, .15, .99);
+}
+
+.button-two:hover:before {
+	transform: scaleX(1) scaleY(1);
+	opacity: 1;
+}
+
+
+/*Button THree*/
+
+.button-three {
+	-webkit-transform: perspective(1px) translateZ(0);
+	background: #08aa61;
+	transform: perspective(1px) translateZ(0);
+	position: relative;
+	transition-timing-function: cubic-bezier(.86, .01, .15, .99);
+	transition-duration: 0.4ss;
+}
+
+.button-three:before {
+	background: linear-gradient(to bottom, #88daa1, #08aa61);
+	transform: scaleY(0);
+	transform-origin: 0% 0%;
+	transition: 0.4s cubic-bezier(.86, .01, .15, .99);
+}
+
+.button-three:hover:before {
+	-webkit-transform: scaleY(1);
+	transform: scaleY(1);
+}
+
+
+/****************
+CLIP-PATH EFFECTS
+
+Button Four*/
+
+.button-four {
+	background: #fff;
+	transform: perspective(1px) translateZ(0);
+	color: black;
+	transition: 0.4s;
+}
+
+.button-four::before {
+	background: rgb(255, 90, 20);
+	clip-path: inset(0 100% 0 0);
+	opacity: 1;
+	transition: 0.4s;
+}
+
+.button-four:hover::before {
+	clip-path: inset(0 0 0 0);
+}
+
+.button-four:hover {
+	color: white;
+	box-shadow: 0 0 0 10px rgba(250, 250, 250, 0.1)
+}
+
+
+/*Button Five*/
+
+.button-five {
+	background: white;
+	color: black;
+	transform: perspective(1px) translateZ(0);
+	transition: 0.4s;
+}
+
+.button-five::before {
+	background: rgb(20, 120, 255);
+	clip-path: polygon(50% 0, 50% 0, 50% 50%, 50% 100%, 50% 100%, 50% 50%);
+	opacity: 1;
+	transition: 0.4s;
+}
+
+.button-five:hover::before {
+	clip-path: polygon(25% -70%, 75% -70%, 120% 50%, 75% 170%, 25% 170%, -20% 50%);
+}
+
+.button-five:hover {
+	color: white;
+	box-shadow: 0 0 0 10px rgba(250, 250, 250, 0.1)
+}
+
+
+/*Button Six*/
+
+.button-six {
+	background: white;
+	color: black;
+	transition: 0.4s;
+	transform: perspective(20px) translateZ(0);
+}
+
+/* .button-six:hover {
+	/* color: white; */
+	/* box-shadow: 0 0 0 10px rgba(250, 250, 250, 0.1) */
+/* } */
+
+.button-six::before {
+	clip-path: circle(0.5% at 50% 50%);
+	background: #9900cc;
+	transition: 0.4s;
+	opacity: 1;
+	}
+
+.button-six:hover::before {
+	clip-path: circle(100% at 50% 50%);
+}
+
+/* .card{
+ background-color: red;
+ color: white;
+ transition: 1s;
+ transform: perspective(20px) translateZ(0);
+}
+.card::before {
+    clip-path: circle(0 at 50% 50%);
+    background-color: #f39811;
+    opacity: 1;
+}
+.card:hover::after{
+    clip-path: circle(100% at 50% 50%);
+} */
+
+.card {
+    background-color : transparent;
+	color: black;
+	transition: 0.4s;
+	transform: perspective(20px) translateZ(0);
+}
+
+/* .card:hover {
+	color: rgb(146, 1, 1);
+	box-shadow: 5px 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* background-color: #9900cc; */
+/* } */
+
+.card::before {
+	clip-path: circle(0.5% at 50% 50%);
+	background-color : #9900cc;
+	transition: 0.4s;
+	opacity: 1;
+}
+
+.card:hover::before {
+	clip-path: circle(100% at 50% 50%);
+}
+
+.container{
+    border: red 2px solid; 
+}
+</style>
+<body>
+    <body>
+		<div>
+			<h1>CSS Button Hover Effects</h1>
+			<p>with the :before pseudo element</p>
+			<div class="container">
+				<p>Gradient</p>
+				<button class="button-one gradient">Hover</button>
+				<button class="button-two gradient">Hover</button>
+				<button class="button-three gradient">Hover</button>
+				<hr>
+				<p>Clip-Path</p>
+				<button class="button-four clip-path">Hover</button>
+				<button class="button-five clip-path">Hover</button>
+			</div>
+            <div class="container card">
+                <button class="button-six clip-path">Hover</button>
+
+            </div>
+		</div>
+	</body>
+</body>
+</html>

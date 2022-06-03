@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="timer"></div>
+    <button onclick="playtemp()">PLAY</button>
+    <div id="timer"></div>
+  </body>
+</html>
+<script>
+  function playtemp() {
+    var timer = 5;
+    var paraTimer = setInterval(mostrarTimer, 1000);
+
+    function mostrarTimer() {
+      if(timer == 0){
+        fim()
+      }else{
+        document.getElementById("timer").innerHTML = timer;
+        timer --;
+      }
+    }
+  }
+  var tempoSave = 0
+  function fim(){
+    tempoSave = timer
+    alert('fim')
+    clearInterval(paraTimer);
+  }
+
+  //     var minutes = 0;
+  //     var seconds = 0;
+  //     function startTimer(duration, display) {
+  //     var timer = duration, minutes, seconds;
+  //     setInterval(function () {
+  //         minutes = parseInt(timer / 60, 10);
+  //         seconds = parseInt(timer % 60, 10);
+  //         minutes = minutes < 10 ? "0" + minutes : minutes;
+  //         seconds = seconds < 10 ? "0" + seconds : seconds;
+  //         display.textContent = minutes + ":" + seconds;
+  //         if (--timer < 0) {
+  //             timer = duration;
+  //         }
+  //     }, 1000);
+  // }
+  //  function play() {
+  //     var duration = 60 * 1; // Converter para segundos // definindo temp nesse caso e 1 min
+  //         display = document.querySelector('#timer'); // definindo que o display e id time
+  //         // timer.innerHTML = display
+  //     startTimer(duration, display); // iniciando função startTime
+  // };
+  // async function task(i) { // 3
+  //   await timer(1000);
+  //   console.log(`Task ${i} done!`);
+  // }
+
+  // async function main() {
+  //   for(let i = 0; i < 100; i+= 10) {
+  //     for(let j = 0; j < 10; j++) { // 1
+  //       if(j % 2) { // 2
+  //         await task(i + j);
+  //       }
+  //     }
+  //   }
+  // }
+  // async function task(i) { // 3
+  //   await timer(1000);
+  //   console.log(`Task ${i} done!`);
+  // }
+
+  // function play(){
+  //     alert('hi');
+
+  // for(var start = 1; start < 10;'') {
+  //   setTimeout(function () {
+  //     alert(start);
+  //   }, 1000);
+  // start++
+  // }
+
+  // }
+</script>

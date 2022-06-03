@@ -1,0 +1,698 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@100&display=swap");
+@font-face {
+  font-family: csgo;
+  src: url("../assets/fonts/cs_regular.ttf");
+}
+@font-face {
+  font-family: sinais;
+  src: url("../assets/fonts/PWNewArrows.ttf");
+}
+body {
+  margin: 0;
+  /* padding: 0; */
+  font-family: Urbanist;
+  background-color: #1f1e27;
+  color: white;
+  font-display: auto; /* <-- diminuir a latemcia de carregamentodas fonts */
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+}
+
+/* Header */
+.header {
+  background-color: #19181e;
+  height: 5rem;
+  width: 100%;
+  box-shadow: 0px 5px 9px rgb(19, 19, 19);
+  display: flex;
+}
+.navmask {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.titulo {
+  font-family: csgo;
+  color: white;
+}
+.header .container {
+  justify-content: space-between;
+}
+a {
+  color: white;
+  text-decoration: none;
+  width: 0;
+}
+.agora {
+  font-weight: 700;
+}
+.navbar_header {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  width: 300px;
+  align-items: center;
+  font-size: 15px;
+}
+
+/* BANNER */
+.banner {
+  height: fit-content;
+  background-image: url("../assets/img/banner.png");
+  background-size: cover;
+  padding: 40px 0;
+  box-shadow: 0px 5px 9px rgb(19, 19, 19);
+  top: 0;
+  border-bottom: solid 2px #de9b35;
+}
+.banner .container {
+  height: 400px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.banner .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  height: 80%;
+  width: 300px;
+  background-color: rgb(25, 24, 30, 0.5);
+  position: absolute;
+}
+.banner p {
+  width: 280px;
+  font-size: 37px;
+}
+
+/* historia cs */
+.galery {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: scroll;
+}
+.galery img {
+  height: 100%;
+  width: 100%;
+
+  flex-shrink: 0;
+
+  object-fit: cover;
+
+  position: sticky;
+  top: 0;
+}
+.galery video {
+  height: 100%;
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  position: sticky;
+  top: 0;
+}
+.galery .div_cs {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(17, 17, 17);
+  flex-shrink: 0;
+  object-fit: cover;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+
+  justify-content: space-evenly;
+  border-top: solid 2px #de9b35;
+}
+.div_cs img {
+  width: 200px;
+  height: 500px;
+}
+.pgl img {
+  width: 250px;
+  height: 250px;
+}
+.imperial img {
+  width: 250px;
+  height: 250px;
+}
+.galery hr {
+  height: 80%;
+  margin: 0;
+  border: none;
+  background-color: #de9b35;
+  border-radius: 10px;
+  width: 3px;
+}
+.galery p {
+  font-weight: 800;
+  width: 530px;
+  color: #f39811;
+}
+.form_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form_text h1 {
+  font-family: csgo;
+}
+
+/* scroll personalizado*/
+.galery::-webkit-scrollbar {
+  display: none;
+}
+/* ::-webkit-scrollbar {
+  display: none;
+} */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px grey;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #de9b35;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e79b28;
+}
+
+/* LI do Header com after e hover */
+/* logo rgb */
+.cslogo a {
+  display: flex;
+  height: 30px;
+  width: max-content;
+  align-items: center;
+}
+.cslogo {
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-animation: hue-animation 4s infinite alternate;
+  background-image: -webkit-linear-gradient(115deg, rgb(51, 255, 0), #f39811);
+}
+li {
+  position: relative;
+  cursor: pointer;
+}
+.li_ani::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 4px;
+  background-color: #de9b35;
+  left: 50%;
+  bottom: -10px;
+  border-radius: 10px;
+  transition: all 0.4s;
+}
+.li_ani:hover::after {
+  width: 100%;
+  left: 0;
+}
+/* button */
+.btn {
+  width: 150px;
+  height: 33px;
+  border: 0;
+  border-radius: 10px;
+  margin-top: 10px;
+  /* cursor diferencia */
+  cursor: url("../assets/img/cursor.png") 4 12, pointer;
+  overflow: hidden; /*  <-- especifica quando o conteúdo de um elemento deve ser cortado */
+  /* fazer com q as bordas do animaçao fiquem no formato do btn */
+  /* transform: perspective(20px) translateZ(0); */
+}
+.btn:hover {
+  background-color: #f39811;
+}
+
+/* botao com animaçao so HOVER pq before e mt hard*/
+/* .btn{
+  content: "";
+  position: absolute;
+  z-index: 1;
+} 
+ .btn-anime{
+  background: white;
+	color: black;
+	transition: 0.4s;
+	transform: perspective(20px) translateZ(0);
+}
+
+.btn-anime::before{
+	clip-path: circle(0.5% at 50% 50%);
+	background: #9900cc;
+	transition: 0.4s;
+	opacity: 1;
+}
+.btn-anime:hover::before{
+  clip-path: circle(100% at 50% 50%);
+} */
+
+/* mine-game */
+.body_game {
+  cursor: url("../assets/img/cursor.png") 4 12, pointer;
+}
+/* card */
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: solid 2px #f39811;
+  border-radius: 10px;
+  width: 300px;
+  height: 400px;
+}
+.card {
+  -webkit-background-clip: text;
+  -webkit-animation: hue-animation 5s infinite alternate;
+  background-image: -webkit-linear-gradient(90deg, red, blue);
+}
+
+/* margem de cor das animaçoes "hue-animation" */
+@keyframes hue-animation {
+  from {
+    -webkit-filter: hue-rotate(-40deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(360deg);
+  }
+}
+
+.body_game .minigame {
+  color: black;
+  width: 100%;
+  height: 87vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.body_game img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+#span_pontos {
+  font-family: csgo;
+}
+#tela {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.alvos {
+  background-color: gray;
+  width: 700px;
+}
+.alvos .container {
+  width: 600px;
+  height: 500px;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.alvohidden {
+  visibility: hidden;
+}
+.alvoativo {
+  visibility: visible;
+}
+
+/* btn info */
+.btn-info {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  background-image: url(../assets/img/info.png);
+  background-size: cover;
+  bottom: 5vh;
+  left: 95.5vw;
+  box-shadow: -4px 4px 8px 2px rgb(19 19 19);
+}
+.cont-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  position: fixed;
+  z-index: 1;
+
+  height: 250px;
+  width: 50px;
+  border-radius: 10px;
+  display: none;
+
+  background-color: #f39811;
+  background-size: cover;
+  bottom: 5vh;
+  left: 95.5vw;
+  box-shadow: -4px 4px 8px 2px rgb(19 19 19);
+}
+.cont-info img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+.cont-info img:hover {
+  width: 37px;
+  height: 37px;
+}
+.cont-info H2 {
+  font-family: csgo;
+  cursor: pointer;
+  margin: 0;
+  margin-top: 30px;
+}
+.cont-info H2:hover {
+  color: black;
+}
+
+/* table */
+.cont-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 87vh;
+}
+.cont-table h1 {
+  margin-bottom: -90px;
+  margin-top: 80px;
+}
+.form-table {
+  height: 50vh;
+  overflow: auto;
+  width: 45vw;
+}
+table {
+  border-collapse: collapse;
+  /* webkit motor de renderização q os navegadores costumam utilizar*/
+  -webkit-border-radius: 10px 10px 0 0;
+
+  /* border-radius: max-content; */
+  width: 50vw;
+  height: 100px;
+  background-color: rgb(21, 21, 21);
+  letter-spacing: 3px;
+  font-size: 17px;
+}
+
+thead th {
+  color: #de9b35;
+  padding: 10px 0 10px 0;
+  border-bottom: 2px solid #de9b35;
+}
+
+tbody td {
+  height: 20px;
+  font-size: 16px;
+  padding: 10px 10px 10px 13px;
+  border-bottom: 1px solid #de9b32;
+}
+.card_log {
+  width: 400px;
+  height: 500px;
+}
+
+.form-inp {
+  display: flex;
+  height: 320px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  margin: 0;
+}
+.form-login {
+  height: 200px;
+}
+input {
+  border-radius: 5px;
+  border: none;
+  height: 25px;
+  caret-color: #f39811;
+  color: #19181e;
+}
+.cont-log {
+  justify-content: space-evenly;
+  align-items: center;
+  height: 87vh;
+}
+.btn-log:hover {
+  /* border: 1px solid black; */
+  width: 145px;
+}
+.loading-div img {
+  display: none;
+  width: 50px;
+}
+.btn-user {
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+  background-image: url(../assets/img/user.png);
+  background-size: cover;
+  display: none;
+}
+.cont-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  position: fixed;
+  z-index: 1;
+
+  display: none;
+
+  height: 175px;
+  width: 150px;
+  border-radius: 10px;
+
+  background-color: #f39811;
+  background-size: cover;
+  top: 10vh;
+  right: 4vw;
+  box-shadow: -4px 4px 8px 2px rgb(19 19 19);
+}
+.cont-user img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+.cont-user H2 {
+  font-family: csgo;
+  cursor: pointer;
+  margin: 0;
+}
+.cont-user H2:hover {
+  color: black;
+}
+.cont-user p {
+  cursor: pointer;
+  font-family: csgo;
+  font-weight: 500;
+  font-size: 20px;
+}
+.cont-user p:hover {
+  color: black;
+}
+/* banner fim de jogo */
+.cont-fim {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  border: #f39811 4px solid;
+
+  height: 500px;
+  width: 350px;
+  border-radius: 10px;
+
+  background-color: #19181e;
+  background-size: cover;
+  box-shadow: -4px 4px 8px 2px rgb(19 19 19);
+}
+.cont-fim img {
+  width: 150px;
+  height: 150px;
+  border: #f39811 3px solid;
+}
+.cont-fim p {
+  color: #f39811;
+}
+
+/* PAGINA MEUS PONTOS */
+
+.navheader-left {
+  top: 0;
+  left: 0;
+  margin: 0;
+  height: 100vh;
+  width: 25%;
+  background-color: #212124;
+}
+
+.header-left {
+  position: fixed;
+  z-index: 999;
+  height: 100vh;
+  width: 25%;
+  background-color: #212124;
+  box-shadow: 0px 5px 9px rgb(19, 19, 19);
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.header-left h1 {
+  color: #f39811;
+}
+
+.hello {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hello h3 {
+  color: #e3b062;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.hello h3 span {
+  font-weight: 800;
+}
+
+.btn-nav {
+  width: 40%;
+  color: white;
+  background-color: #e6005a;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2% 5;
+}
+
+.btn-nav-white {
+  width: 40%;
+  background-color: white;
+  border: 3px solid #e6005a;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2% 5;
+}
+
+.btn-nav-white h3 {
+  color: #e6005a;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-nav h3,
+.btn-logout h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-logout {
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  background-color: #32b9cd;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 15px;
+  margin-bottom: 100px;
+  cursor: pointer;
+}
+.banner-perfil {
+  display: flex;
+}
+.minhatabela {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+/* BTN USER */
+.form-btn-user {
+  display: flex;
+  flex-direction: column;
+}
+.form-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70%;
+}
+.btn-perfil {
+  cursor: pointer;
+  border-radius: 3px;
+}
+.header-left a {
+  width: 10px;
+}
+.header-left .sinal {
+  font-family: sinais;
+  color: #fff;
+  font-size: 50px;
+  cursor: pointer;
+  transform: scaleX(-1);
+  margin: 0;
+}
+.header-left .sinal:hover {
+  color: #f39811;
+}
+.div-forum {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+}
+.avisos {
+  height: 100%;
+  width: 800px;
+  display: flex;
+}
+.avisos .container {
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+textarea {
+  width: 700px;
+}
+.feed-container {
+  width: 700px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+
+  overflow: scroll;
+}

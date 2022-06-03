@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" href="assets/img/logo.png" />
+    <title>SCORE</title>
+  </head>
+  <body>
+    <div class="header"></div>
+    <div class="container cont-log">
+      <div class="box">
+        <div class="card card_log">
+          <h1 class="titulo cslogo">LOGIN</h1>
+          <div class="container form-inp form-login">
+            <p>Email:</p>
+            <input type="text" id="inp_email" />
+            <p>Senha:</p>
+            <input type="password" id="inp_senha" />
+            <button class="btn btn-log" onclick="entrar()">Entrar</button>
+            <!-- ALERTA DE ERRO -->
+            <div class="alerta_erro">
+              <div class="card_erro" id="cardErroLogin">
+                <span id="mensagem_erro"></span>
+              </div>
+            </div>
+            <!-- AVISO DE ERRO EM LOGIN -->
+            <div id="div_erros_login"></div>
+            <!-- LOADING EFFECT -->
+            <div id="div_aguardar" class="loading-div">
+              <img src="assets/loading.gif" id="loading-gif" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="card card_log">
+          <h1 class="titulo cslogo">CADASTRO</h1>
+          <div class="container form-inp form-casdatro">
+            <p>Usuario:</p>
+            <input type="text" id="inp_nome" />
+            <p>Email:</p>
+            <input type="text" id="inp_cadastrarEmail" />
+            <p>Senha:</p>
+            <input type="password" id="inp_cadastrarSenha" />
+            <p>Confirmar Senha:</p>
+            <input type="password" id="inp_ConfirmaSenha" />
+            <button class="btn btn-log" onclick="cadastrar()">Cadastrar</button>
+            <!-- ALERTA DE ERRO -->
+            <div class="alerta_erro">
+              <div class="card_erro" id="cardErroCadastro">
+                <span id="mensagem_erroCadastro"></span>
+              </div>
+            </div>
+            <!-- AVISO DE ERRO EM LOGIN -->
+            <div id="div_erros_cadastro"></div>
+            <!-- LOADING EFFECT -->
+            <div id="div_aguardar_cadastro" class="loading-div">
+              <img src="assets/loading.gif" id="loading-gif" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navmask header">
+      <div class="container">
+        <h1 class="titulo cslogo"><a href="index.html">CS - GO</a></h1>
+        <ul class="navbar_header">
+          <li class="li_ani"><a href="index.html">Home</a></li>
+          <li class="li_ani agora">
+            <a href="tabela.html">Tabela de Pontos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- validações -->
+<script src="js/funcoes.js"></script>
+<script>
+  function entrar() {
+    aguardar();
+
+    var emailVar = inp_email.value;
+    var senhaVar = inp_senha.value;
+
+    // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS
+    if (emailVar == "" || senhaVar == "") {
+      cardErroLogin.style.display = "block";
+      mensagem_erro.innerHTML = "Campo não preenchido!";
+      inp_email.style.border = "3px solid #f39811";
+      inp_senha.style.border = "3px solid #f39811";
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagemLogin, 5000);
+    }
+
+    if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+      cardErroLogin.style.display = "block";
+      mensagem_erro.innerHTML = "E-mail inválido!";
+      inp_email.style.border = "3px solid #f39811";
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagemLogin, 5000);
+    }
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then((json) => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            window.location = "index.html";
+            sessionStorage.ID_USUARIO = json.idUsuario;
+            sessionStorage.setItem(`idUsuario`, `${json.idUsuario}`);
+            sessionStorage.NOME_USUARIO = json.nickname;
+            sessionStorage.EMAIL_USUARIO = json.email;
+          });
+        } else {
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          // resposta.text().then(texto => {
+          //     console.error(texto);
+          //     finalizarAguardar(texto);
+          // });
+          cardErroLogin.style.display = "block";
+          mensagem_erro.innerHTML = "E-mail e/ou senha errados!";
+          finalizarAguardar();
+          return false;
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
+
+    return false;
+  }
+  function cadastrar() {
+    aguardarCadastro();
+
+    // PARAMETRIZANDO VARIÁVEIS
+    var nomeVar = inp_nome.value;
+    var emailVar = inp_cadastrarEmail.value;
+    var senhaVar = inp_cadastrarSenha.value;
+    var confirmacaoSenhaVar = inp_ConfirmaSenha.value;
+
+    // CONFIRMAÇÕES DE PREENCHIMENTOS
+    // CAMPO VAZIO
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == ""
+    ) {
+      cardErroCadastro.style.display = "block";
+      mensagem_erroCadastro.innerHTML = "Campo não preenchido!";
+      // ressaltando bordas
+      inp_nome.style.border = "3px solid #f39811";
+      inp_cadastrarEmail.style.border = "3px solid #f39811";
+      inp_cadastrarSenha.style.border = "3px solid #f39811";
+      inp_ConfirmaSenha.style.border = "3px solid #f39811";
+      finalizarAguardarCadastro();
+      return false;
+    } else {
+      setInterval(sumirMensagemCadastro, 5000);
+    }
+
+    // E-MAIL INVÁLIDO
+    if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+      cardErroCadastro.style.display = "block";
+      mensagem_erroCadastro.innerHTML = "E-mail inválido!";
+      inp_cadastrarEmail.style.border = "3px solid #f39811";
+      finalizarAguardarCadastro();
+      return false;
+    } else {
+      setInterval(sumirMensagemCadastro, 5000);
+    }
+
+    // SENHA DIFERENTE
+    if (senhaVar != confirmacaoSenhaVar) {
+      cardErro.style.display = "block";
+      mensagem_erroCadastro.innerHTML = "As senhas necessitam ser iguais";
+      inp_senha.style.border = "3px solid #f39811";
+      inp_ComfirmaSenha.style.border = "3px solid #8008FF";
+      finalizarAguardarCadastro();
+      return false;
+    } else {
+      setInterval(sumirMensagemCadastro, 5000);
+    }
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErroCadastro.style.display = "block";
+          mensagem_erroCadastro.innerHTML = "Cadastro realizado com sucesso!";
+          finalizarAguardarCadastro();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardarCadastro();
+      });
+
+    return false;
+  }
+
+  function sumirMensagemLogin() {
+    cardErroLogin.style.display = "none";
+    inp_email.style.border = "0px";
+    inp_senha.style.border = "0px";
+  }
+  function sumirMensagemCadastro() {
+    cardErroCadastro.style.display = "none";
+    inp_nome.style.border = "0px";
+    inp_cadastrarEmail.style.border = "0px";
+    inp_cadastrarSenha.style.border = "0px";
+    inp_ConfirmaSenha.style.border = "0px";
+  }
+</script>

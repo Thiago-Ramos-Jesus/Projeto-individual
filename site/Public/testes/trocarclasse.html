@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    div {
+      padding: 50px;
+      /* transition: background-color 1s; */
+    }
+
+    .azul {
+      background-color: #00b;
+    }
+
+    .verde {
+      background-color: #0b0;
+    }
+  </style>
+  <body>
+    <div id="div_div" class="azul"></div>
+    <button onclick="verde()">verde</button>
+    <button onclick="trocar()">azul</button>
+  </body>
+</html>
+<script>
+  function trocaClasse(elemento, ativa, dativa) {
+    elemento.classList.remove(ativa);
+    elemento.classList.add(dativa);
+}
+
+function verde(){
+        var div = document.querySelector("div");
+        trocaClasse(div, "azul", "verde");
+}
+function trocar(){
+        var div = document.querySelector("div");
+        trocaClasse(div, "verde", "azul");
+}
+//   function trocaClasse2(elemento, antiga, nova) {
+//     elemento.classList.remove(antiga);
+//     elemento.classList.add(nova);
+//   }
+
+//    setTimeout(function () {
+//      var div = document.querySelector("div");// selecionado item dentro do html, nesse caso uma div
+//      trocaClasse2(div, "verde", "azul");// valor do elemento detro do () da function
+//    }, 1000);// tempo de ação
+</script>

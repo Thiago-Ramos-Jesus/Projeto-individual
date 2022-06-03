@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="js/minegame.js"></script>
+    <script src="js/funcoes.js"></script>
+    <link rel="icon" href="assets/img/logo.png" />
+    <title>Mini-Game</title>
+  </head>
+  <body class="body_game" onload="validarHeader()">
+    <div class="header">
+      <div class="navmask header">
+        <div class="container">
+          <h1 class="titulo cslogo"><a href="index.html"> - </a></h1>
+          <ul class="navbar_header">
+            <span id="span_agora" class="agora"></span>
+            <span id="span_antes" class=""></span>
+            <span id="span_total" class=""></span>
+            <span id="span_tempo"></span>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="minigame" id="miniGame">
+      <div class="card">
+        <button class="btn" onclick="jogar()">JOGAR</button>
+        <button class="btn" onclick="comojogar()">COMO JOGAR</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/funcoes.js"></script>
+    <link rel="icon" href="assets/img/logo.png">
+    <title>CSGO</title>
+</head>
+<body onload='validarHeader()'>
+<div class="header"></div>
+
+<div class="banner"> <!--  banner -->
+    <div class="container">
+        <div class="box">
+            <p>
+                O Counter-Strike:
+                <br>
+                <span>Mini-Game</span>
+            </p>
+            <button onclick='validarLOG()' class="btn btn-anime">JOGUE AQUI!</button>
+        </div>
+    </div>
+</div>
+
+<!-- galeria de conteudo -->
+<div class="container">
+    <div class="galery">
+        <div class='div_cs'>
+            <img src="assets/img/person.png" alt="">
+            <hr>
+
+            <div class="form_text">
+
+            
+            <h1>Counter-Strike</h1>  
+            <p>
+            Counter-Strike: Global Offensive (CS:GO) expandirá na jogabilidade de ação baseada em equipes na qual foi pioneiro quando foi lançado há 19 anos.
+            <br>
+            <br>
+            CS:GO contém novos mapas, personagens e armas, além de contar com versões atualizadas de conteúdos do CS clássico (como de_dust etc.).
+            <br>
+            <br>
+            "O Counter-Strike surpreendeu a indústria de jogos quando o mod improvável se tornou o jogo de ação de PC mais jogado no mundo quase imediatamente após o seu lançamento, em agosto de 1999. Durante os últimos anos, continuou a ser um dos jogos mais jogados do mundo, foi o jogo principal de inúmeros torneios competitivos e vendeu mais de 25 milhões de cópias no mundo inteiro. O CS:GO promete expandir a jogabilidade popular do jogo e trazê-la não só para o PC, mas também para os consoles de última geração e para Macs", disse Doug Lombardi, da Valve.</p>
+            </div>
+        </div>
+
+        <div class='div_cs pgl'>
+            <img src="assets/img/logo-pgl.png" alt="">
+            <hr>
+            <div class="form_text">
+
+            
+                <h1>- Major</h1>  
+                <p>
+                    Os Counter-Strike: Global Offensive Major Championships, mais conhecidos por Majors, são torneios de esports de Counter-Strike: Global Offensive (CS:GO) patrocinados pela Valve, a produtora do jogo. Os Majors foram introduzidos em 2013, num torneio realizado em Jönköping, Suécia, promovido pela DreamHack e com uma premiação de US$250,000. Seis equipas foram diretamente convidadas, seis equipas foram convidadas devido aos bons resultados nos torneios anteriores, e as restantes quatro equipas vieram pelo qualificador.
+<br>
+<br>
+                    Desde aí, o circuito dos Majors expandiu-se significativamente, tendo agora US$1,000,000 de premiação e 24 equipas de todo o mundo. Os Majors são considerados os mais importantes e prestigiantes torneios no cenário do Global Offensive.</p>
+                </div>
+    </div>
+        <video autoplay muted loop poster="assets/img/poste_imperial.png" preload="none">
+            <source  src="assets/videos/imperial.mp4"   autostart type="video/mp4">
+        </video>
+        
+        <div class='div_cs imperial'>
+            <img src="assets/img/logo-imperial.png" alt="">
+            <hr>
+            <div class="form_text">
+
+            
+                <h1>- IMPERIAL</h1>  
+                <p>
+                    O projeto The Last Dance, após três meses de expectativa, foi finalmente oficializado no dia 18 de fevereiro. A equipe brasileira de Counter-Strike: Global Offensive (CS:GO) vestirá a camisa da Imperial Esports e contará com Gabriel "FalleN" Toledo, Fernando "fer" Alvarenga, Lincoln "fnx" Lau, Ricardo "boltz" Prass, Vinicius "VINI" Figueiredo e Luis "Peacemaker" Tadeu no elenco. Como já era de se esperar, o retorno do núcleo bicampeão do Major chamou a atenção, com o anúncio na Twitch ultrapassando 820 mil visualizações totais. Além disso, a venda de camisetas do novo time bateu recorde.
+                
+                <br>
+            <br>
+            O nome da iniciativa é uma referência ao documentário "The Last Dance", que conta a história de Michael Jordan em sua última temporada pelo Chicago Bulls. A despedida do astro norte-americano serviu de inspiração para que FalleN reunisse amigos do passado em um quinteto 100% brasileiro. Isso porque, segundo o próprio, essa poderia ser a sua última temporada como jogador profissional de Counter-Strike.</p>
+                </div>
+    </div>
+
+    </div>
+</div>
+
+<!--footer inicio-->
+<div id="div_info">
+    <div id="cont_info" class="cont-info">
+        <img onclick="redeSteam()" src="assets/img/Steam_Logo.png" alt=""> 
+        <img onclick="redeTwitter()" src="assets/img/twitter.png" alt=""> 
+        <img onclick="redeInsta()" src="assets/img/insta.png" alt=""> 
+        <h2 onclick="btnFechar()">X</h2>
+    </div>
+    <div id="info_btn" class="btn-info" onclick="btninfo()">
+    </div>
+</div>
+<!--footer fim-->
+<!-- header fixo -->
+    <div class="navmask header">
+        <div class="container">
+            <h1 class="titulo cslogo"><a href="index.html">CS - GO</a></h1>
+            <ul class="navbar_header">
+                <li class="li_ani agora"><a href="index.html">Home</a></li>
+                <li class="li_ani" onclick="validarLOG()">Mini-Game</li>
+                <li class="li_ani"><a href="tabela.html">Tabela de Pontos</a></li>
+                <li id="li_Login" class="li_ani"><a href="login_cadastro.html">Login</a></li>
+                <div id="user_btn" class="btn-user" onclick="btnuser()">
+            </ul>
+        </div>
+        <div id="div_user">
+            <div id="cont_user" class="cont-user">
+                <!-- <p >Meu Perfil</p> -->
+                <p onclick="perfil()">Meus Pontos</p>
+                <p onclick="limparSessao()">sair</p> 
+                <h2 onclick="btnFecharUser()">X</h2>
+            </div>
+    </div>
+
+</body>
+</body>
+</html>

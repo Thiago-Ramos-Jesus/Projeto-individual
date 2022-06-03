@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link
+      rel="shortcut icon"
+      href="./assets/img/info.png"
+      type="image/x-icon"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSGO | Meu Perfil</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <!-- <body"> -->
+  <body onload="atualizarFeed()">
+    <div class="banner-perfil">
+      <div class="navheader-left"></div>
+      <!-- tablela -->
+      <div class="div-forum">
+        <div class="avisos">
+            <div class="container">
+                <div class="div-form">
+                    <div class="div-results">
+                        <div id="feed_container" class="feed-container">
+                        </div>
+                    </div>
+                    <form id="form_postagem" method="post" onsubmit="return publicar()">
+                        <br>
+                        <label>
+                            <textarea placeholder="Descrição (máximo de 250 caracteres):" name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                        </label>
+                        <br>
+                        <button class="btn btn-perfil">Enviar</button>
+                </form>
+            </div>
+      </div>
+    </div>
+    <!-- header lateral -->
+    <div class="header-left">
+      <h1 class="sinal" onclick="index()">K</h1>
+      <h1>Meu Perfil</h1>
+      <div class="hello">
+        <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+      </div>
+      <div class="form-btn">
+        <div class="form-btn-user">
+          <button class="btn btn-perfil" onclick="perfil()">Meus Pontos</button>
+          <button class="btn btn-perfil" onclick="validarLOG()">
+            Mini-Game
+          </button>
+          <button class="btn btn-perfil" onclick="forum()">Forum</button>
+        </div>
+        <button class="btn" onclick="limparSessao()">Sair</button>
+      </div>
+    </div>
+  </body>
+</html>
+<script src="./js/funcoes.js"></script>
+<script>
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+  function limparFormulario() {
+        document.getElementById("form_postagem").reset();
+    }
+
+  function publicar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var corpo = {
+            descricao: form_postagem.descricao.value
+        }
+
+        fetch(`/usuario/publicar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.location = "/dashboard/forum.html";
+                limparFormulario();
+                
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            
+        });
+
+        return false;
+      }
+
+      // PIPI
+        function atualizarFeed() {
+        //aguardar();
+        fetch(`/usuarios/listarPublicaçao`)
+        .then(function (resposta) {
+          if (resposta.ok) {
+            if (resposta.status == 204) {
+              var feed = document.getElementById("feed_container");
+              var mensagem = document.createElement("span");
+              mensagem.innerHTML = "Nenhum resultado encontrado."
+              feed.appendChild(mensagem);
+              throw "Nenhum resultado encontrado!!";
+            }
+            
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanID = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+
+
+                        spanID.innerHTML = "ID: <b>" + publicacao.idComentario + "</b>";
+                        spanNome.innerHTML = "Autor: <b>" + publicacao.nickname + "</b>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.text + "</b>";
+
+                        divPublicacao.className = "publicacao";
+                        spanTitulo.id = "inputNumero" + publicacao.idComentario;
+                        spanNome.className = "publicacao-nome";
+                        divDescricao.className = "publicacao-descricao";
+
+                        divPublicacao.appendChild(spanID);
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(divDescricao);
+                        feed.appendChild(divPublicacao);
+                    }
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);     
+        });
+  }
+
+  function testar() {
+
+
+    var formulario = new URLSearchParams(
+      new FormData(document.getElementById("form_postagem"))
+    );
+
+    var divResultado = document.getElementById("div_feed");
+
+    divResultado.appendChild(
+      document.createTextNode(formulario.get("descricao"))
+    );
+    divResultado.innerHTML = formulario.get("descricao");
+
+
+    return false;
+  }
+</script>

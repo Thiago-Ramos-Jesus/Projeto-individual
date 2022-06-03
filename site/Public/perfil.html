@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link
+      rel="shortcut icon"
+      href="../assets/icon/favicon.ico"
+      type="image/x-icon"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSGO | Meu Perfil</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="../js/funcoes.js"></script>
+  </head>
+
+  <body onload="atualizarScore(), validarHeader()">
+    <!-- <body onload="validarSessao()"> -->
+    <div class="banner-perfil">
+      <div class="navheader-left"></div>
+      <!-- tablela -->
+      <div class="minhatabela">
+        <div class="cont-table table-perfil" id="card_score">
+          <h1 class="titulo cslogo">MEUS SCORES</h1>
+          <div class="container form-table">
+            <table>
+              <thead>
+                <th>Nick</th>
+                <th>Pts</th>
+                <th>Erros</th>
+                <th>Tempo</th>
+              </thead>
+              <tbody id="table_score"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- header lateral -->
+    <div class="header-left">
+      <h1 class="sinal" onclick="index()">K</h1>
+      <h1>Meu Perfil</h1>
+      <div class="hello">
+        <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+      </div>
+      <div class="form-btn">
+        <div class="form-btn-user">
+          <button class="btn btn-perfil" onclick="perfil()">Meus Pontos</button>
+          <button class="btn btn-perfil" onclick="validarLOG()">
+            Mini-Game
+          </button>
+          <button class="btn btn-perfil" onclick="forum()">Forum</button>
+        </div>
+        <button class="btn" onclick="limparSessao()">Sair</button>
+      </div>
+    </div>
+  </body>
+</html>
+<script src="./js/funcoes.js"></script>
+<script>
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  function atualizarScore() {
+    // console.log(`${sessionStorage.getItem("idUsuario")}`)
+    // var idUsuario = sessionStorage.ID_USUARIO;
+    // console.log(idUsuario);
+
+    fetch(`/usuarios/listarPerfil/${sessionStorage.getItem("idUsuario")}`)
+      .then(function (resposta) {
+        if (resposta.ok) {
+          if (resposta.status == 204) {
+            console.log("Nenhum resultado encontrado!!");
+          }
+
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+            var tabela_score = document.getElementById("table_score");
+            tabela_score.innerHTML = "";
+            for (let i = 0; i < resposta.length; i++) {
+              var usuario = resposta[i];
+
+              tabela_score.innerHTML += `
+            <tr>
+              <td class="td-custom td-small">${usuario.nickname}</td>
+              <td class="td-custom td-large">${usuario.pts}</td>
+              <td class="td-custom td-large">${usuario.erros}</td>
+              <td class="td-custom td-medium">${usuario.temp}</td>
+            </tr>
+            `;
+            }
+          });
+        } else {
+          throw "Houve um erro na API!";
+        }
+      })
+      .catch(function (resposta) {
+        console.error(resposta);
+      });
+  }
+</script>
