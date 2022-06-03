@@ -12,57 +12,52 @@ var acertosVar = 0;
 var errosVar = 0;
 var pontosVar = 0;
 var totalVar = 0;
-var alvoNovo = 1;
 var tempoSave = 0;
 
-function jogarnovamente() {
+function jogarnovamenteDificil() {
   acertosVar = 0;
   errosVar = 0;
   pontosVar = 0;
   totalVar = 0;
   tempoSave = 0;
   timer = 0;
-  alvoNovo = 1;
-  jogar();
+  jogarDificil();
 }
 
-function jogar() {
+function jogarDificil() {
   span_agora.innerHTML = `Acertos: ${acertosVar}`;
   span_antes.innerHTML = `Erros: ${errosVar}`;
   span_total.innerHTML = `Total: ${totalVar}`;
   span_tempo.innerHTML = `Tempo: <span id="timer" class="li_ani"></span>`;
 
-  var imagens = "";
-  for (var contador = 1; contador < 36; contador++) {
-    if (contador == 1) {
-      imagens += `<img class='alvoI${contador}  alvoativo'   id='imgAlvo' onclick="acerto()" src="assets/img/alvo.png" alt="alvo" />`;
-    } else {
-      imagens += `<img class='alvoI${contador}  alvohidden'   id='imgAlvo' onclick="acerto()" src="assets/img/alvo.png" alt="alvo" />`;
-    }
-  }
-
+  // <button class='alvoI alvoativo' id='imgAlvo' onclick="acertoDificil()">aqui</button>
   miniGame.innerHTML = `
   <div id="tela" onclick="erro()">
   <div class="alvos">
   <div class="container" id="container_alvos">
-  ${imagens}
+  <img class='alvoI' id='imgAlvo' onclick="acertoDificil()" src="assets/img/alvo.png" alt="alvo" />
   </div>
   </div>
   </div>
-  `; // 35 img
+  `;
   tela.style.backgroundImage = "url(assets/img/bannergame.jpg)";
-  playtemp();
+
+  playtempDificil();
 }
 var timer = 0;
 
-function playtemp() {
+function playtempDificil() {
+  timer = 60;
   paraTimer = setInterval(mostrarTimer, 1000);
   function mostrarTimer() {
     document.getElementById("timer").innerHTML = timer;
-    timer++;
+    timer--;
+    if (timer < 0) {
+      fimJogoDificil();
+    }
   }
 }
-function fimJogo() {
+function fimJogoDificil() {
   tempoSave += timer;
   // alert("fim de jogo");
   clearInterval(paraTimer);
@@ -73,26 +68,20 @@ function fimJogo() {
       <img src="assets/img/csgo-dance.gif">
       <div class="formbox">
         
-        <p>Voce fez: 35 pontos em ${tempoSave}s</p>
-        <button class="btn" onclick="jogarnovamente()">Jogar Novamente</button>
+        <p>Voce fez: ${acertosVar} pontos em 60s</p>
+        <button class="btn" onclick="jogarnovamenteDificil()">Jogar Novamente</button>
       <a href="tabela.html"><button class="btn">Tabela de Pontos</button></a>
       </div>
   </div>
 </div>`;
-  cadastraPontos();
+  cadastraPontosDificil();
 }
 
-function acerto() {
+function acertoDificil() {
   if (acertosVar == 34) {
-    fimJogo();
-  } else if (acertosVar++ <= 35) {
-    var alvoAntigo = alvoNovo;
-    numero();
-    var alvo = document.querySelector(`.alvoI${alvoAntigo}`);
-    desativar(alvo, "alvoativo", "alvohidden");
-    var alvo2 = document.querySelector(`.alvoI${alvoNovo}`);
-    ativar(alvo2, "alvohidden", "alvoativo");
-    totalVar++;
+    fimJogoDificil();
+  } else if (acertosVar++ < 34) {
+    numeroDificil();
   }
 }
 function erro() {
@@ -108,26 +97,28 @@ function erro() {
   span_total.innerHTML = `Total: ${totalVar}`;
 }
 
-function desativar(elemento, ativo, dativo) {
-  elemento.classList.remove(ativo);
-  elemento.classList.add(dativo);
-}
-function ativar(elemento, dativo, ativo) {
-  elemento.classList.remove(dativo);
-  elemento.classList.add(ativo);
-}
-function numero() {
-  alvoNovo = Math.floor(Math.random() * 35) + 1;
-  // console.log = alvoNovo
+function numeroDificil() {
+  var maxY = 533;
+  var minY = 97;
+  var maxX = 931;
+  var minX = 337;
+
+  var Y = Math.floor(Math.random() * (maxY - minY + 1) + minY);
+
+  var X = Math.floor(Math.random() * (maxX - minX + 1) + minX);
+  console.log(`X:${X} e Y:${Y}`);
+
+  imgAlvo.style.left = `${X}px`;
+  imgAlvo.style.top = `${Y}px`;
 }
 
-function cadastraPontos() {
+function cadastraPontosDificil() {
   // PARAMETRIZANDO VARIÁVEIS
   var fkJogadorVar = sessionStorage.ID_USUARIO;
   var ptnVar = acertosVar;
   var erroVar = errosVar;
-  var tempVar = tempoSave;
-  var dificuldadeVar = "facíl";
+  var tempVar = 60;
+  var dificuldadeVar = "difícil";
   fetch("/usuarios/pontos", {
     method: "POST",
     headers: {

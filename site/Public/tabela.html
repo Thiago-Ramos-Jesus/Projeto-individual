@@ -8,7 +8,7 @@
     <link rel="icon" href="assets/img/logo.png" />
     <title>SCORE</title>
   </head>
-  <body onload="atualizarScore()">
+  <body onload="atualizarScore(), validarHeader()">
     <div class="header"></div>
     <div class="cont-table" id="card_score">
       <h1 class="titulo cslogo">SCORE</h1>
@@ -19,6 +19,7 @@
             <th>Pts</th>
             <th>Erros</th>
             <th>Tempo</th>
+            <th>Dificuldade</th>
           </thead>
           <tbody id="table_score"></tbody>
         </table>
@@ -26,16 +27,24 @@
     </div>
     <div class="navmask header">
       <div class="container">
-        <h1 class="titulo cslogo"><a href="index.html">CS - GO</a></h1>
-        <ul class="navbar_header">
-          <li class="li_ani"><a href="index.html">Home</a></li>
-          <li class="li_ani" onclick="validarLOG()">Mini-Game</li>
-          <li class="li_ani agora">
-            <a href="tabela.html">Tabela de Pontos</a>
-          </li>
-        </ul>
+          <h1 class="titulo cslogo"><a href="index.html">CS - GO</a></h1>
+          <ul class="navbar_header">
+              <li class="li_ani agora"><a href="index.html">Home</a></li>
+              <li class="li_ani" onclick="validarLOG()">Mini-Game</li>
+              <li class="li_ani"><a href="tabela.html">Tabela de Pontos</a></li>
+              <li id="li_Login" class="li_ani"><a href="login_cadastro.html">Login</a></li>
+              <div id="user_btn" class="btn-user" onclick="btnuser()">
+          </ul>
       </div>
-    </div>
+      <div id="div_user">
+          <div id="cont_user" class="cont-user">
+              <!-- <p >Meu Perfil</p> -->
+              <p onclick="perfil()">Meus Pontos</p>
+              <p onclick="limparSessao()">sair</p> 
+              <h2 onclick="btnFecharUser()">X</h2>
+          </div>
+      </div>
+  </div>
   </body>
 </html>
 <script src="./js/funcoes.js"></script>
@@ -64,7 +73,8 @@
               <td class="td-custom td-small">${usuario.nickname}</td>
               <td class="td-custom td-large">${usuario.pts}</td>
               <td class="td-custom td-large">${usuario.erros}</td>
-              <td class="td-custom td-medium">${usuario.temp}</td>
+              <td class="td-custom td-medium">${usuario.temp}s</td>
+              <td class="td-custom td-medium">${usuario.dificuldade}</td>
             </tr>
             `;
             }
