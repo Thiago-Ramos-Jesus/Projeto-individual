@@ -42,6 +42,9 @@ p {
   font-family: csgo;
   color: white;
 }
+.body_game .header .cont-game{
+  justify-content: center;
+}
 .header .container {
   justify-content: space-between;
 }
@@ -179,6 +182,8 @@ a {
 } */
 ::-webkit-scrollbar {
   width: 10px;
+  background-color: #19181e;
+  box-shadow: inset -1px 0px 1px 1px rgb(19, 19, 19);
 }
 ::-webkit-scrollbar-thumb {
   background: #de9b35;
@@ -309,11 +314,11 @@ li {
   border-radius: 100%;
 }
 /* jogo sem for */
+
 .body_game .alvoI {
-  width: 50px;
-  height: 50px;
+  width: 4%;
+  height: 8%;
   border-radius: 100%;
-  /* jogo sem for */
   position: absolute;
 }
 #span_pontos {
@@ -321,13 +326,16 @@ li {
 }
 #tela {
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
-  background-size:cover ;
+  background-size: cover;
 }
 .alvos {
+  display: flex;
+  align-items: center;
   background-color: gray;
-  width: 700px;
+  width: 52%;
 }
 .alvos .container {
   width: 600px;
@@ -346,8 +354,8 @@ li {
 /* btn info */
 .btn-info {
   position: fixed;
-  height: 50px;
-  width: 50px;
+  height: 6.5%;
+  width: 3%;
   border-radius: 100%;
   background-image: url(../assets/img/info.png);
   background-size: cover;
@@ -365,7 +373,7 @@ li {
   z-index: 1;
 
   height: 250px;
-  width: 50px;
+  width: 3%;
   border-radius: 10px;
   display: none;
 
@@ -376,14 +384,14 @@ li {
   box-shadow: -4px 4px 8px 2px rgb(19 19 19);
 }
 .cont-info img {
-  width: 35px;
-  height: 35px;
+  width: 34px;
+  height: 34px;
   cursor: pointer;
 }
 .cont-info img:hover {
-  width: 37px;
-  height: 37px;
-  transition: 0.5s;
+  width: 35px;
+  height: 35px;
+  /* transition: 0.5s; */
 }
 .cont-info H2 {
   font-family: csgo;
@@ -410,7 +418,11 @@ li {
 .form-table {
   height: 50vh;
   overflow: auto;
+
   width: 45vw;
+}
+.form-table::-webkit-scrollbar {
+  display: none;
 }
 table {
   border-collapse: collapse;
@@ -683,6 +695,7 @@ input {
   color: #f39811;
   transition: 0.5s;
 }
+/* forum */
 .div-forum {
   display: flex;
   height: 100vh;
@@ -703,6 +716,8 @@ input {
   margin-top: 0;
 }
 textarea {
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+  caret-color: #f39811;
   border-radius: 5px;
   height: 50px;
   width: 700px;
@@ -720,9 +735,18 @@ textarea {
   flex-direction: column;
   background-color: #212124;
   box-shadow: 10px 12px 12px 0px rgb(19 19 19);
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
   padding: 10px;
+  border: 1.5px solid #e09c36;
   overflow: auto;
+}
+#form_postagem{
+  border: 1.5px solid #e09c36;
+  background-color: #e09c36;
+  border-radius: 0 0 10px 10px;
+  padding: 10px;
+  width: 700px;
+  box-shadow: 10px 12px 12px 0px rgb(19 19 19);
 }
 .publicacao {
   display: flex;
@@ -738,6 +762,7 @@ textarea {
   display: flex;
   align-self: flex-end;
 }
+/* como jogar */
 .cont-comojogar {
   display: flex;
   flex-direction: row;
@@ -789,7 +814,7 @@ textarea {
   cursor: pointer;
 }
 .cont-comojogar h2:active {
-font-size: 23px;
+  font-size: 23px;
   color: #000000;
   /* transition: 0.5s; */
 }

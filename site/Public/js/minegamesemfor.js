@@ -40,6 +40,8 @@ function jogarDificil() {
   </div>
   </div>
   `;
+
+  header.className = "container cont-game";
   tela.style.backgroundImage = "url(assets/img/bannergame.jpg)";
 
   playtempDificil();
@@ -98,18 +100,18 @@ function erro() {
 }
 
 function numeroDificil() {
-  var maxY = 533;
-  var minY = 97;
-  var maxX = 931;
-  var minX = 337;
+  var maxY = 14;
+  var minY = 90;
+  var maxX = 72;
+  var minX = 25;
 
   var Y = Math.floor(Math.random() * (maxY - minY + 1) + minY);
 
   var X = Math.floor(Math.random() * (maxX - minX + 1) + minX);
   console.log(`X:${X} e Y:${Y}`);
 
-  imgAlvo.style.left = `${X}px`;
-  imgAlvo.style.top = `${Y}px`;
+  imgAlvo.style.left = `${X}%`;
+  imgAlvo.style.top = `${Y}%`;
 }
 
 function cadastraPontosDificil() {

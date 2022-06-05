@@ -50,6 +50,7 @@ function jogar() {
   </div>
   </div>
   `; // 35 img
+  header.className = "container cont-game";
   tela.style.backgroundImage = "url(assets/img/bannergame.jpg)";
   playtemp();
 }
